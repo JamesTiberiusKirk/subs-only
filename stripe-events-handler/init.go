@@ -42,7 +42,7 @@ func initLogger() {
 	})
 }
 
-func initServer() *echo.Echo {
+func initHttpServer() *echo.Echo {
 	e := echo.New()
 
 	e.Use(middleware.RequestLoggerWithConfig(middleware.RequestLoggerConfig{

@@ -1,9 +1,7 @@
 package main
 
 import (
-	"net/http"
-
-	"github.com/labstack/echo/v4"
+	"github.com/JamesTiberiusKirk/subs-only/stripe-events-handler/server"
 )
 
 func main() {
@@ -12,11 +10,9 @@ func main() {
 	config := buildConfig()
 
 	// db := initDB(config)
-	e := initServer()
+	e := initHttpServer()
 
-	e.GET("/helloworld", func(c echo.Context) error {
-		return c.String(http.StatusOK, "hello world")
-	})
+	server.NewServer(e)
 
 	e.Logger.Fatal(e.Start(config.HTTP.Port))
 }
